@@ -1,0 +1,54 @@
+.acrylic-header,
+.acrylic-main {
+  backdrop-filter: blur(10px); /* Apply blur to the background /
+  background: rgba(0, 0, 0, 0.1); / Slightly dark transparent background */
+}
+
+.acrylic-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.acrylic-main {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox {
+  appearance: none;
+  background-color: #f5f5f5;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.custom-checkbox:checked::before {
+  content: '';
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #666;
+  clip-path: polygon(0 30%, 20% 50%, 50% 80%, 80% 30%, 70% 20%, 50% 40%);
+}
+
+.custom-checkbox:hover {
+  border-color: #999;
+}
+
+.custom-checkbox:checked {
+  background-color: #e0e0e0;
+  border-color: #999;
+}
