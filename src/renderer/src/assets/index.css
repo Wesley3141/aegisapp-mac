@@ -9,41 +9,31 @@
 
   html,
   body {
-   
-
-    @apply h-full;
-
-    @apply select-none;
-
-    @apply bg-transparent;
-
-    @apply font-mono antialiased text-white;
-
-    @apply overflow-hidden;
+    @apply h-full select-none font-mono antialiased text-white overflow-hidden;
+    background: rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(10px);
   }
-  }
+}
 
-  header {
-    -webkit-app-region: drag;
-  }
+header {
+  -webkit-app-region: drag;
+}
 
-  button {
-    -webkit-app-region: no-drag;
-  }
+button {
+  -webkit-app-region: no-drag;
+}
 
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
+::-webkit-scrollbar {
+  @apply w-2;
+}
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-[#555] rounded-md;
-  }
+::-webkit-scrollbar-thumb {
+  @apply bg-[#555] rounded-md;
+}
 
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
 
 @layer components {
   .mdxeditor-root {
@@ -51,7 +41,48 @@
   }
   
   .mdxeditor-toolbar-button {
-    @apply bg-transparent hover:bg-gray-700 rounded p-1;
+    @apply bg-transparent rounded p-1;
+    background: transparent !important; /* Force transparent */
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    filter: none !important;
+    outline: none !important;
+    color: inherit !important;
+  }
+  
+  .mdxeditor-toolbar-button:hover,
+  .mdxeditor-toolbar-button:focus {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Optionally remove hover background if undesired */
+  .mdxeditor-toolbar-button:hover {
+    background: transparent !important;
+  }
+
+  /* Override MDX Editor toolbar button styles */
+  .mdxeditor-toolbar-button,
+  .mdxeditor-toolbar-button > *,
+  .mdxeditor-toolbar-button svg,
+  .mdxeditor-toolbar-button div {
+    @apply bg-transparent;
+    background: transparent !important;
+    background-color: transparent !important;
+    --mdxeditor-button-background: transparent !important;
+    --mdxeditor-toolbar-button-background: transparent !important;
+  }
+
+  .mdxeditor-toolbar-button:hover,
+  .mdxeditor-toolbar-button:focus,
+  .mdxeditor-toolbar-button:active {
+    @apply bg-gray-700/50;
+    background: rgba(75, 85, 99, 0.5) !important;
+    --mdxeditor-button-background: rgba(75, 85, 99, 0.5) !important;
+    --mdxeditor-toolbar-button-background: rgba(75, 85, 99, 0.5) !important;
   }
 
   /* More specific selectors for the dialog */
@@ -85,5 +116,10 @@
   [role="dialog"] button::before {
     content: '×' !important;
     @apply !block !text-xl !w-auto !h-auto !font-bold;
+  }
+
+  /* Dropdown Toolbar Styles */
+  .dropdown-toolbar {
+    @apply bg-gray-800 rounded shadow-lg p-1;
   }
 }
