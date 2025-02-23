@@ -13,7 +13,7 @@ This is an _italic_ text.
 
 ## Headings
 
-Here are all the heading formats currently supported by **_NoteMark_**:
+Here are all the heading formats currently supported by **_Aegis_**:
 
 # Heading 1
 
@@ -43,6 +43,10 @@ Here we have a numbered list:
 
 > This is a blockquote. You can use it to emphasize some text or to cite someone.
 
+### Thematic Breaks
+
+There is a **thematic break** button in the top right corner along with undo and redo buttons.
+
 ### Code blocks
 
 Only `inline code` is currently supported!
@@ -51,4 +55,67 @@ Code block snippets using the following syntax _\`\`\`js\`\`\`_ are **_not suppo
 
 ### Links
 
-Links are **_not supported_** yet!
+Links are **_supported_** with limited functionality!
+
+
+
+### Special Characters
+
+Here are some commonly used special characters in mathematics, computer science, and probability:
+
+#### Math Symbols
+- ± (plus-minus)
+- × (multiplication)
+- ÷ (division)
+- ≠ (not equal)
+- ≈ (approximately equal)
+- ≤ (less than or equal)
+- ≥ (greater than or equal)
+- ∞ (infinity)
+- √ (square root)
+- ∑ (summation)
+- ∏ (product)
+- ∫ (integral)
+- ∂ (partial derivative)
+- ∆ (delta/change)
+
+#### Set Theory & Number Sets
+- ∈ (element of)
+- ∉ (not element of)
+- ⊂ (subset of)
+- ⊆ (subset or equal)
+- ∪ (union)
+- ∩ (intersection)
+- ∅ (empty set)
+- ℕ (natural numbers)
+- ℤ (integers)
+- ℚ (rational numbers)
+- ℝ (real numbers)
+- ℂ (complex numbers)
+
+#### Logic & CS
+- ¬ (negation/NOT)
+- ∧ (logical AND)
+- ∨ (logical OR)
+- ⊕ (XOR)
+- → (implies)
+- ↔ (if and only if)
+- ⊢ (turnstile/proves)
+- ⊨ (models/satisfies)
+- λ (lambda)
+- ∀ (for all/universal quantifier)
+- ∃ (there exists/existential quantifier)
+- ≡ (equivalent)
+- ⌈ ⌉ (ceiling)
+- ⌊ ⌋ (floor)
+
+#### Probability & Statistics
+- μ (mean/mu)
+- σ (sigma/standard deviation)
+- π (pi)
+- ρ (rho/correlation)
+- ∝ (proportional to)
+- χ (chi)
+
+Feel free to copy and paste these symbols as needed!
+
