@@ -1,3 +1,4 @@
+import React, { useState, useRef } from 'react'
 import {
   MDXEditor,
   headingsPlugin,
@@ -31,6 +32,8 @@ import { useMarkdownEditor } from '@renderer/hooks/useMarkdownEditor'
 
 export const MarkdownEditor = () => {
   const { editorRef, selectedNote, handleAutoSaving, handleBlur } = useMarkdownEditor()
+  const [showToolbar, setShowToolbar] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   if (!selectedNote) return null
 
@@ -53,13 +56,23 @@ export const MarkdownEditor = () => {
         imagePlugin(),
         toolbarPlugin({
           toolbarContents: () => (
-            <div className="flex flex-col gap-4 fixed top-4 right-4 z-50 space-y-2">
-              <div><UndoRedo /></div>
-              <div><InsertThematicBreak /></div>
-              <div><InsertTable /></div>
-              <div><InsertCodeBlock /></div>
-              <div><InsertImage /></div>
-              <div><BoldItalicUnderlineToggles /></div>
+            <div className="fixed top-4 right-4 z-50">
+              <button
+                className="text-white/70 text-lg font-light hover:text-white/90 transition-colors text-center w-4"
+                onClick={() => setShowToolbar(!showToolbar)}
+              >
+                -
+              </button>
+              {showToolbar && (
+                <div ref={dropdownRef} className="dropdown-toolbar mt-1 flex flex-col gap-1">
+                  <UndoRedo />
+                  <InsertThematicBreak />
+                  <InsertTable />
+                  <InsertCodeBlock />
+                  <InsertImage />
+                  <BoldItalicUnderlineToggles />
+                </div>
+              )}
             </div>
           )
         }),
