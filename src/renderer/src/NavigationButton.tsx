@@ -12,9 +12,9 @@ const NavigationButton = () => {
     <footer className="fixed bottom-0 right-0 m-4">
       <Link
         to="/todo"
-        className="bg-slate-500 text-white rounded-lg px-4 py-2 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="text-white/70 text-lg font-light hover:text-white/90 transition-colors"
       >
-        Go to To-Do List
+        T
       </Link>
     </footer>
   )
