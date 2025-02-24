@@ -4,36 +4,34 @@ import { autoSavingTime } from '@shared/constants'
 import { NoteContent } from '@shared/models'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { throttle } from 'lodash'
-import { useRef } from 'react'
+import { useRef, useCallback, useEffect } from 'react'
 
 export const useMarkdownEditor = () => {
   const selectedNote = useAtomValue(selectedNoteAtom)
   const saveNote = useSetAtom(saveNoteAtom)
   const editorRef = useRef<MDXEditorMethods>(null)
 
-  const handleAutoSaving = throttle(
-    async (content: NoteContent) => {
-      if (!selectedNote) return
+  // Reset editor content when selected note changes
+  useEffect(() => {
+    if (selectedNote && editorRef.current) {
+      editorRef.current.setMarkdown(selectedNote.content)
+    }
+  }, [selectedNote?.title]) // Use title instead of id since it's guaranteed to exist
 
-      console.info('Auto saving:', selectedNote.title)
+  const handleAutoSaving = useCallback(
+    throttle(async (content: NoteContent) => {
+      if (!selectedNote || content === selectedNote.content) return
 
       await saveNote(content)
-    },
-    autoSavingTime,
-    {
-      leading: false,
-      trailing: true
-    }
+    }, autoSavingTime),
+    [selectedNote, saveNote]
   )
 
   const handleBlur = async () => {
-    if (!selectedNote) return
+    if (!selectedNote || !editorRef.current) return
 
-    handleAutoSaving.cancel()
-
-    const content = editorRef.current?.getMarkdown()
-
-    if (content != null) {
+    const content = editorRef.current.getMarkdown()
+    if (content != null && content !== selectedNote.content) {
       await saveNote(content)
     }
   }
